@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.289" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/startGame"
         android:layout_width="173dp"
         android:layout_height="52dp"
         android:text="@string/start_game"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/showStatistics"
         android:layout_width="175dp"
         android:layout_height="52dp"
         android:text="@string/statistics"
@@ -41,9 +41,11 @@
         app:layout_constraintVertical_bias="0.614" />
 
     <Button
+        android:id="@+id/showPreferences"
         android:layout_width="175dp"
         android:layout_height="52dp"
         android:text="@string/preferences"
+        android:onClick="showPreferences"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="languages">
+        <item>@string/norwegian</item>
+        <item>@string/german</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>no</item>
+        <item>de</item>
+    </string-array>
+
+    <string-array name="number_of_questions">
+        <item>5</item>
+        <item>10</item>
+        <item>25</item>
+    </string-array>
+</resources>
