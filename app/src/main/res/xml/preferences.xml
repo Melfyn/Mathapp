@@ -3,15 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ListPreference
-        android:key="languages"
+        android:key="preference_languages"
         android:title="@string/language"
         android:entries="@array/languages"
         android:entryValues="@array/language_codes"
         android:summary="%s"/>
 
     <ListPreference
-        android:key="number_of_questions"
+        android:key="preference_number_of_questions"
         android:title="@string/number_of_questions"
+        android:defaultValue="5"
         android:entries="@array/number_of_questions"
         android:entryValues="@array/number_of_questions"
         android:summary="%s"/>

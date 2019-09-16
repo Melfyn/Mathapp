@@ -8,6 +8,19 @@
     <string name="norwegian">Norsk</string>
     <string name="german">Tysk</string>
     <string name="number_of_questions">Antall Regnestykker</string>
-    <string name="title_activity_game">GameActivity</string>
-    <string name="title_activity_statistics">StatisticsActivity</string>
+    <string name="title_activity_game">Tallkrønsj</string>
+    <string name="title_activity_statistics">Statistikk</string>
+    <string name="question_field_text">Svar på følgende mattestykke og trykk "svar":</string>
+    <string name="key_0">0</string>
+    <string name="key_1">1</string>
+    <string name="key_2">2</string>
+    <string name="key_3">3</string>
+    <string name="key_4">4</string>
+    <string name="key_5">5</string>
+    <string name="key_6">6</string>
+    <string name="key_7">7</string>
+    <string name="key_8">8</string>
+    <string name="key_9">9</string>
+    <string name="answer_key">Svar</string>
+    <string name="delete_key">Slett</string>
 </resources>

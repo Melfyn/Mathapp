@@ -8,6 +8,19 @@
     <string name="norwegian">Norwegisch</string>
     <string name="german">Deutsch</string>
     <string name="number_of_questions">Anzahl der Mathe</string>
-    <string name="title_activity_game">GameActivity</string>
-    <string name="title_activity_statistics">StatisticsActivity</string>
+    <string name="title_activity_game">Zahlenverarbeitung</string>
+    <string name="title_activity_statistics">Statistiken</string>
+    <string name="question_field_text">Beantworten Sie das folgende Mattenstück und drücken Sie die Antworttaste:</string>
+    <string name="key_0">0</string>
+    <string name="key_1">1</string>
+    <string name="key_2">2</string>
+    <string name="key_3">3</string>
+    <string name="key_4">4</string>
+    <string name="key_5">5</string>
+    <string name="key_6">6</string>
+    <string name="key_7">7</string>
+    <string name="key_8">8</string>
+    <string name="key_9">9</string>
+    <string name="answer_key">antworten</string>
+    <string name="delete_key">einfach</string>
 </resources>
