@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Zahlenverarbeitung</string> <!-- Alternativt navn til appen: Nummer knirschen -->
     <string name="start_game">Spiel beginnen</string>
-    <string name="statistics">siehe Statistiken</string>
+    <string name="statistics_btn">siehe Statistiken</string>
+    <string name="statistics">Statistiken</string>
     <string name="preferences">Vorlieben</string>
     <string name="language">Sprache</string>
     <string name="norwegian">Norwegisch</string>
     <string name="german">Deutsch</string>
     <string name="number_of_questions">Anzahl der Mathe</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_statistics">StatisticsActivity</string>
 </resources>

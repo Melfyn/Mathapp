@@ -50,13 +50,15 @@ public class SetPreferencesActivity extends AppCompatActivity {
             String value = sharedPreferences.getString(s, "");
             switch (value) {
                 case "no": {
-                    SetPreferencesActivity.this.changeLanguage("no");
-                    SetPreferencesActivity.this.recreate();
+                    changeLanguage("no");
+                    recreate();
+                    break;
                 }
 
                 case "de": {
-                    SetPreferencesActivity.this.changeLanguage("de");
-                    SetPreferencesActivity.this.recreate();
+                    changeLanguage("de");
+                    recreate();
+                    break;
                 }
             }
         }

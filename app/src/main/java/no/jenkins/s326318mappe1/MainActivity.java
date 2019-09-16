@@ -14,6 +14,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void startGame(View v){
+        Intent intent=new Intent(this,GameActivity.class);
+        startActivity(intent);
+    }
+
+    public void showStatistics(View v){
+        Intent intent=new Intent(this,StatisticsActivity.class);
+        startActivity(intent);
+    }
+
     public void showPreferences(View v){
         Intent intent=new Intent(this,SetPreferencesActivity.class);
         startActivity(intent);
