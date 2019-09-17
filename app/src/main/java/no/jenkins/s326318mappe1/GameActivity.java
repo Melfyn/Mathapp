@@ -18,9 +18,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
+
+    ArrayList<MathQuestion> prefLengthMathQuestions = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,39 +32,67 @@ public class GameActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /* Create random math questions*/
+        // Create random math questions
+
         createRandomMathArrays();
+        // Game Launch
+        gameLaunch(prefLengthMathQuestions);
         /* Listener for knappene*/
         startKeyListeners();
-        gameLaunch();
         gameplay();
-        // getString("preference_number_of_questions","5");
-    }
-
-    public String getString (String key, String defaultkey){
-        Context context = getApplicationContext();
-        SharedPreferences sharedpref = context.getSharedPreferences(key, Context.MODE_PRIVATE);
-        return sharedpref.getString(key, null);
     }
 
     public void createRandomMathArrays() {
-        /*
-        ArrayList questions = new ArrayList();
-        ArrayList answers = new ArrayList();
-        */
-
-        // Alternativ 1
+        // Retrieves selected game length value from preferences. Default value is 5
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String horePreference =  sharedPreferences.getString("preference_number_of_questions", "5");
+        String gameLengthPreference =  sharedPreferences.getString("preference_number_of_questions", "5");
+        int gameLength = Integer.parseInt(gameLengthPreference);
 
-        Log.d("alternativ 1",horePreference);
+        // Create String arrays from XML String arrays
+        String[] questions = getResources().getStringArray(R.array.questions);
+        String[] answers = getResources().getStringArray(R.array.answers);
 
+        ArrayList<MathQuestion> mathQuestions = new ArrayList<>();
+
+        //add questions and answers to arraylist.
+        for(int i = 0; i< 25; i++){
+            String question = questions[i];
+            String answer = answers[i];
+            mathQuestions.add(new MathQuestion(question, answer));
+        }
+
+        // Randomize arraylist
+        Collections.shuffle(mathQuestions);
+
+        // Create array with preferred game length
+        //ArrayList<MathQuestion> prefLengthMathQuestions = new ArrayList<>();
+
+        for(int i = 0; i < gameLength; i++){
+            MathQuestion oneQuestion = mathQuestions.get(i);
+            prefLengthMathQuestions.add(oneQuestion);
+        }
+
+        // Log test
+        String  logArray = "";
+        for(MathQuestion oneQuestion : prefLengthMathQuestions) {
+            logArray += "Q: "+ oneQuestion.getQuestion()+" A: "+oneQuestion.getAnswer()+"\n";
+        }
+
+
+        Log.d("Matharray:", logArray);
+
+
+
+        // Fill arraylist with math questions and answers
+
+
+        Log.d("alternativ 1",gameLengthPreference);
+        /*
         Context context = getApplicationContext();
         SharedPreferences sharedpref = context.getSharedPreferences("preference_number_of_questions", Context.MODE_PRIVATE);
         Log.d("alternativ 2", sharedpref.toString());
+        */
 
-        String[] questions = getResources().getStringArray(R.array.questions);
-        String[] answers = getResources().getStringArray(R.array.answers);
         Log.d("Questions array", "arr: " + Arrays.toString(questions));
         Log.d("Answers array", "arr: " + Arrays.toString(answers));
 
@@ -69,14 +100,12 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    public void gameLaunch(){
+    public void gameLaunch(ArrayList arrayList){
         String[] questions = getResources().getStringArray(R.array.questions);
         String questionText = getResources().getString(R.string.question_field_text);
         TextView mathQuestionView = findViewById(R.id.math_question_view);
-        mathQuestionView.setText(questionText +" "+ "\n" + questions[0]);
+        mathQuestionView.setText(questionText +" "+ "\n" + prefLengthMathQuestions.get(0).getQuestion());
     }
-
-
 
     public void gameplay() {
         // TextView answerQuestionView = findViewById(R.id.math_answer_view);
