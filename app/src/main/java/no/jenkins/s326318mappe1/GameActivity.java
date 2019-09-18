@@ -2,6 +2,7 @@ package no.jenkins.s326318mappe1;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -88,7 +90,16 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void scoreScreen(){
-        
+        // NB denne kodebiten finnes også i create math array. burde kanskje kuttes eller gjøres bedre
+        // Retrieves selected game length value from preferences. Default value is 5
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String gameLengthPreference =  sharedPreferences.getString("preference_number_of_questions", "5");
+        int gameLength = Integer.parseInt(gameLengthPreference);
+
+        TextView scoreView = findViewById(R.id.in_game_stats);
+        scoreView.setText(score + " / " + gameLength);
+
+
     }
 
     public void startKeyListeners(){
@@ -150,6 +161,12 @@ public class GameActivity extends AppCompatActivity {
         outState.putInt();
         outState.
          */
+        // Save language setting when changing rotation
+        String language = PreferenceManager.getDefaultSharedPreferences(this).getString("preference_languages", "default");
+        Configuration config = getResources().getConfiguration();
+        if( language.equals("default") ) language = Locale.getDefault().getLanguage();
+        config.locale = new Locale(language);
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 
     @Override

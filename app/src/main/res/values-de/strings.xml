@@ -23,4 +23,9 @@
     <string name="key_9">9</string>
     <string name="answer_key">antworten</string>
     <string name="delete_key">einfach</string>
+    <string name="game_end_msg">Es sind keine weiteren Fragen verfügbar</string>
+    <string name="exit_game_msg">Willst du das Spiel wirklich beenden?</string>
+    <string name="right_answer">Richtige Antwort!</string>
+    <string name="wrong_answer">Falsche Antwort!</string>
+
 </resources>

@@ -63,4 +63,16 @@ public class SetPreferencesActivity extends AppCompatActivity {
             }
         }
     };
+
+    // Save language setting when changing rotation
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        String language = PreferenceManager.getDefaultSharedPreferences(this).getString("preference_languages", "default");
+        Configuration config = getResources().getConfiguration();
+        if( language.equals("default") ) language = Locale.getDefault().getLanguage();
+        config.locale = new Locale(language);
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+    }
 }
