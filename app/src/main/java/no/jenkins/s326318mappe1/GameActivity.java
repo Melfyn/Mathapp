@@ -26,6 +26,8 @@ import java.util.List;
 public class GameActivity extends AppCompatActivity {
 
     ArrayList<MathQuestion> prefLengthMathQuestions = new ArrayList<>();
+    int currentQuestion = 0;
+    int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +37,12 @@ public class GameActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Create random math questions
-
         createRandomMathArrays();
         // Game Launch
-        gameLaunch(prefLengthMathQuestions);
+        gamePlay();
         /* Listener for knappene*/
         startKeyListeners();
-        gameplay();
+        // gameplay();
     }
 
     public void createRandomMathArrays() {
@@ -66,9 +67,7 @@ public class GameActivity extends AppCompatActivity {
         // Randomize arraylist
         Collections.shuffle(mathQuestions);
 
-        // Create array with preferred game length
-        //ArrayList<MathQuestion> prefLengthMathQuestions = new ArrayList<>();
-
+        // Create arraylist with preferred length
         for(int i = 0; i < gameLength; i++){
             MathQuestion oneQuestion = mathQuestions.get(i);
             prefLengthMathQuestions.add(oneQuestion);
@@ -79,45 +78,17 @@ public class GameActivity extends AppCompatActivity {
         for(MathQuestion oneQuestion : prefLengthMathQuestions) {
             logArray += "Q: "+ oneQuestion.getQuestion()+" A: "+oneQuestion.getAnswer()+"\n";
         }
-
-
         Log.d("Matharray:", logArray);
-
-
-
-        // Fill arraylist with math questions and answers
-
-
-        Log.d("alternativ 1",gameLengthPreference);
-        /*
-        Context context = getApplicationContext();
-        SharedPreferences sharedpref = context.getSharedPreferences("preference_number_of_questions", Context.MODE_PRIVATE);
-        Log.d("alternativ 2", sharedpref.toString());
-        */
-
-        Log.d("Questions array", "arr: " + Arrays.toString(questions));
-        Log.d("Answers array", "arr: " + Arrays.toString(answers));
-
-
-
     }
 
-    public void gameLaunch(ArrayList arrayList){
-        String[] questions = getResources().getStringArray(R.array.questions);
+    public void gamePlay(){
         String questionText = getResources().getString(R.string.question_field_text);
         TextView mathQuestionView = findViewById(R.id.math_question_view);
-        mathQuestionView.setText(questionText +" "+ "\n" + prefLengthMathQuestions.get(0).getQuestion());
+        mathQuestionView.setText(questionText +" "+ "\n" + prefLengthMathQuestions.get(currentQuestion).getQuestion());
     }
 
-    public void gameplay() {
-        // TextView answerQuestionView = findViewById(R.id.math_answer_view);
-        /*
-        Button keyOne = findViewById(R.id.key1);
-        String buttonText = keyOne.getText().toString();
-        answerQuestionView.setText(buttonText);
-        */
-
-       // findViewById(R.id.key1).setOnClickListener(view -> addKeyInput());
+    public void scoreScreen(){
+        
     }
 
     public void startKeyListeners(){
@@ -158,11 +129,15 @@ public class GameActivity extends AppCompatActivity {
         TextView checkAnswerView = findViewById(R.id.check_answer);
         String currentInput = answerQuestionView.getText().toString();
 
-        if(currentInput.equals(prefLengthMathQuestions.get(0).getAnswer())){
+    if(currentInput.equals(prefLengthMathQuestions.get(currentQuestion).getAnswer())){
             checkAnswerView.setText("Riktig svar");
+            currentQuestion++;
+            gamePlay();
             Log.d("CheckAnswer","Riktig svar");
         } else {
             checkAnswerView.setText("Galt svar");
+            currentQuestion++;
+            gamePlay();
             Log.d("CheckAnswer","Galt svar");
         }
     }
