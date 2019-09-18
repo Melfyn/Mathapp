@@ -7,9 +7,11 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -153,15 +155,31 @@ public class GameActivity extends AppCompatActivity {
 
     public void checkAnswer(){
         TextView answerQuestionView = findViewById(R.id.math_answer_view);
+        TextView checkAnswerView = findViewById(R.id.check_answer);
         String currentInput = answerQuestionView.getText().toString();
-        String[] answers = getResources().getStringArray(R.array.answers);
 
-        if(currentInput.equals(answers[0])){
-
-            Log.d("CheckAnswer", "Svaret er riktig ");
+        if(currentInput.equals(prefLengthMathQuestions.get(0).getAnswer())){
+            checkAnswerView.setText("Riktig svar");
+            Log.d("CheckAnswer","Riktig svar");
         } else {
-            Log.d("CheckAnswer","Svaret er galt");
+            checkAnswerView.setText("Galt svar");
+            Log.d("CheckAnswer","Galt svar");
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // lagre spill, input, posisjon i spi.ll
+        /*
+        outState.putInt();
+        outState.
+         */
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+         // restore spillet da
+    }
 }
