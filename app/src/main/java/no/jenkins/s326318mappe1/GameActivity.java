@@ -1,6 +1,7 @@
 package no.jenkins.s326318mappe1;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -26,7 +28,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class GameActivity extends AppCompatActivity {
-
+    /* Burde denne ligge her?????
+    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    String gameLengthPreference =  sharedPreferences.getString("preference_number_of_questions", "5");
+    int gameLength = Integer.parseInt(gameLengthPreference);
+    */
     ArrayList<MathQuestion> prefLengthMathQuestions = new ArrayList<>();
     int currentQuestion = 0;
     int score = 0;
@@ -40,11 +46,13 @@ public class GameActivity extends AppCompatActivity {
 
         // Create random math questions
         createRandomMathArrays();
+        // initiate score screen
+        scoreScreen();
         // Game Launch
         gamePlay();
         /* Listener for knappene*/
         startKeyListeners();
-        // gameplay();
+
     }
 
     public void createRandomMathArrays() {
@@ -94,12 +102,11 @@ public class GameActivity extends AppCompatActivity {
         // Retrieves selected game length value from preferences. Default value is 5
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String gameLengthPreference =  sharedPreferences.getString("preference_number_of_questions", "5");
+        String scoreScreenTxt = getResources().getString(R.string.score_txt);
         int gameLength = Integer.parseInt(gameLengthPreference);
 
         TextView scoreView = findViewById(R.id.in_game_stats);
-        scoreView.setText(score + " / " + gameLength);
-
-
+        scoreView.setText(scoreScreenTxt+" "+score + " / " + gameLength+" ");
     }
 
     public void startKeyListeners(){
@@ -113,7 +120,8 @@ public class GameActivity extends AppCompatActivity {
         findViewById(R.id.key7).setOnClickListener(view -> addKeyInput("7"));
         findViewById(R.id.key8).setOnClickListener(view -> addKeyInput("8"));
         findViewById(R.id.key9).setOnClickListener(view -> addKeyInput("9"));
-        findViewById(R.id.answer_key).setOnClickListener(view -> checkAnswer());
+        //findViewById(R.id.answer_key).setOnClickListener(view -> checkAnswer());
+        findViewById(R.id.answer_key).setOnClickListener(view -> checkGamePosition());
         findViewById(R.id.delete_key).setOnClickListener(view -> deleteKeyInput());
     }
 
@@ -124,33 +132,70 @@ public class GameActivity extends AppCompatActivity {
 
     public void deleteKeyInput() {
         TextView answerQuestionView = findViewById(R.id.math_answer_view);
-        if (answerQuestionView != null)
-        {
+        if (answerQuestionView != null) {
             String currentInput = answerQuestionView.getText().toString();
-            if (currentInput.length() > 0)
-            {
+            if (currentInput.length() > 0) {
                 currentInput = currentInput.substring(0, currentInput.length() -1);
                 answerQuestionView.setText(currentInput);
             }
         }
     }
 
-    public void checkAnswer(){
+    public void checkGamePosition(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String gameLengthPreference =  sharedPreferences.getString("preference_number_of_questions", "5");
+        int gameLength = Integer.parseInt(gameLengthPreference);
+
+        TextView checkAnswerView = findViewById(R.id.check_answer);
+
+        checkAnswer(gameLength);
+    }
+
+    public void checkAnswer(int gameLength){
         TextView answerQuestionView = findViewById(R.id.math_answer_view);
         TextView checkAnswerView = findViewById(R.id.check_answer);
         String currentInput = answerQuestionView.getText().toString();
+        String rightAnswer = getResources().getString(R.string.right_answer);
+        String wrongAnswer = getResources().getString(R.string.wrong_answer);
 
-    if(currentInput.equals(prefLengthMathQuestions.get(currentQuestion).getAnswer())){
-            checkAnswerView.setText("Riktig svar");
-            currentQuestion++;
-            gamePlay();
+        if(currentInput.equals(prefLengthMathQuestions.get(currentQuestion).getAnswer())){
+            checkAnswerView.setText(rightAnswer);
+            score++;
+            scoreScreen();
+            answerQuestionView.setText("");
             Log.d("CheckAnswer","Riktig svar");
         } else {
-            checkAnswerView.setText("Galt svar");
-            currentQuestion++;
-            gamePlay();
+            checkAnswerView.setText(wrongAnswer);
+            answerQuestionView.setText("");
             Log.d("CheckAnswer","Galt svar");
         }
+
+        if(currentQuestion == gameLength -1) {
+            checkAnswerView.setText("spillet er over");
+            saveAndExit();
+        } else {
+            currentQuestion++;
+            gamePlay();
+        }
+    }
+
+    private void saveAndExit(){
+        // save data
+
+
+
+        // end dialog
+        AlertDialog.Builder gameEndDialog = new AlertDialog.Builder(this);
+        gameEndDialog.setTitle(getString(R.string.game_end_title));
+        gameEndDialog.setMessage(getString(R.string.game_end_msg));
+        gameEndDialog.setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        gameEndDialog.setCancelable(false);
+        gameEndDialog.create().show();
     }
 
     @Override

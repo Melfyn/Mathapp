@@ -23,8 +23,11 @@
     <string name="key_9">9</string>
     <string name="answer_key">Svar</string>
     <string name="delete_key">Slett</string>
+    <string name="game_end_title">Fullført</string>
     <string name="game_end_msg">Det er ingen flere tilgjengelige spørsmål</string>
+    <string name="ok">Ok</string>
     <string name="exit_game_msg">Vil du virkelig avslutte spillet?</string>
     <string name="right_answer">Riktig svar!</string>
     <string name="wrong_answer">Galt svar!</string>
+    <string name="score_txt">Antall riktige:</string>
 </resources>
