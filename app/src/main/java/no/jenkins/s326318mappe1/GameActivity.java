@@ -28,11 +28,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class GameActivity extends AppCompatActivity {
-    /* Burde denne ligge her?????
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-    String gameLengthPreference =  sharedPreferences.getString("preference_number_of_questions", "5");
-    int gameLength = Integer.parseInt(gameLengthPreference);
-    */
+
     ArrayList<MathQuestion> prefLengthMathQuestions = new ArrayList<>();
     int currentQuestion = 0;
     int score = 0;
@@ -52,7 +48,6 @@ public class GameActivity extends AppCompatActivity {
         gamePlay();
         /* Listener for knappene*/
         startKeyListeners();
-
     }
 
     public void createRandomMathArrays() {
@@ -120,7 +115,6 @@ public class GameActivity extends AppCompatActivity {
         findViewById(R.id.key7).setOnClickListener(view -> addKeyInput("7"));
         findViewById(R.id.key8).setOnClickListener(view -> addKeyInput("8"));
         findViewById(R.id.key9).setOnClickListener(view -> addKeyInput("9"));
-        //findViewById(R.id.answer_key).setOnClickListener(view -> checkAnswer());
         findViewById(R.id.answer_key).setOnClickListener(view -> checkGamePosition());
         findViewById(R.id.delete_key).setOnClickListener(view -> deleteKeyInput());
     }
@@ -181,8 +175,28 @@ public class GameActivity extends AppCompatActivity {
 
     private void saveAndExit(){
         // save data
+        // access gamelength
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String gameLengthPreference =  sharedPreferences.getString("preference_number_of_questions", "5");
 
+        int gameLength = Integer.parseInt(gameLengthPreference);
 
+        SharedPreferences scoreData = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor scoreEditor = scoreData.edit();
+
+        scoreEditor.putInt("lastScore", score);
+        scoreEditor.putInt("gameLength", gameLength);
+        scoreEditor.apply();  // end adding last score
+
+        // Add total score
+        int totalScore =  sharedPreferences.getInt("totalScore", 0);
+        int totalLength = sharedPreferences.getInt("totalLength",0);
+        totalScore += score;
+        totalLength += gameLength;
+
+        scoreEditor.putInt("totalScore", totalScore);
+        scoreEditor.putInt("totalLength", totalLength);
+        scoreEditor.apply();  // end adding total score
 
         // end dialog
         AlertDialog.Builder gameEndDialog = new AlertDialog.Builder(this);
@@ -201,11 +215,13 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        // Store game values when screen is rotated
         // lagre spill, input, posisjon i spi.ll
-        /*
-        outState.putInt();
-        outState.
-         */
+        TextView answerQuestionView = findViewById(R.id.math_answer_view);
+        String currentInput = answerQuestionView.getText().toString();
+        outState.putInt("currentQuestion",currentQuestion);
+        outState.putString("currentInput",currentInput);
+
         // Save language setting when changing rotation
         String language = PreferenceManager.getDefaultSharedPreferences(this).getString("preference_languages", "default");
         Configuration config = getResources().getConfiguration();
@@ -217,6 +233,8 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-         // restore spillet da
+         // Restore values when screen is rotated
+        savedInstanceState.getInt("currentQuestion");
+        savedInstanceState.getString("currentInput");
     }
 }

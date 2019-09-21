@@ -30,4 +30,7 @@
     <string name="wrong_answer">Falsche Antwort!</string>
     <string name="score_txt">Nummer richtig:</string>
     <string name="ok">Ok</string>
+    <string name="total_game_title">Gesamtpunktzahl</string>
+    <string name="last_game_title">Letzte Partitur</string>
+    <string name="delete_statistics">Statistiken löschen</string>
 </resources>

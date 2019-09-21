@@ -30,4 +30,7 @@
     <string name="right_answer">Riktig svar!</string>
     <string name="wrong_answer">Galt svar!</string>
     <string name="score_txt">Antall riktige:</string>
+    <string name="total_game_title">Total score</string>
+    <string name="last_game_title">Siste spill score</string>
+    <string name="delete_statistics">Slett statistikk</string>
 </resources>
