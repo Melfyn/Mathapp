@@ -117,6 +117,7 @@ public class GameActivity extends AppCompatActivity {
         findViewById(R.id.key9).setOnClickListener(view -> addKeyInput("9"));
         findViewById(R.id.answer_key).setOnClickListener(view -> checkGamePosition());
         findViewById(R.id.delete_key).setOnClickListener(view -> deleteKeyInput());
+
     }
 
     public void addKeyInput(String keyInput) {
@@ -210,6 +211,28 @@ public class GameActivity extends AppCompatActivity {
         });
         gameEndDialog.setCancelable(false);
         gameEndDialog.create().show();
+    }
+
+    // Dialog when you try to cancel the game.
+    @Override
+    public void onBackPressed(){
+        AlertDialog.Builder cancelGameDialog = new AlertDialog.Builder(this);
+        cancelGameDialog.setTitle(getString(R.string.cancel_dialog_title));
+        cancelGameDialog.setMessage(getString(R.string.cancel_dialog_text));
+        cancelGameDialog.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        cancelGameDialog.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        cancelGameDialog.setCancelable(false);
+        cancelGameDialog.create().show();
     }
 
     @Override

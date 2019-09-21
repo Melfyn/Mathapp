@@ -33,4 +33,8 @@
     <string name="total_game_title">Total score</string>
     <string name="last_game_title">Siste spill score</string>
     <string name="delete_statistics">Slett statistikk</string>
+    <string name="cancel_dialog_title">Avslutt spill</string>
+    <string name="cancel_dialog_text">Vil du virkelig avslutte spillet?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nei</string>
 </resources>

@@ -33,4 +33,8 @@
     <string name="total_game_title">Gesamtpunktzahl</string>
     <string name="last_game_title">Letzte Partitur</string>
     <string name="delete_statistics">Statistiken löschen</string>
+    <string name="cancel_dialog_title">Spiel beenden</string>
+    <string name="cancel_dialog_text">Willst du das Spiel wirklich beenden?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
 </resources>
