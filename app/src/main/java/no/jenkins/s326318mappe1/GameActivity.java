@@ -155,12 +155,14 @@ public class GameActivity extends AppCompatActivity {
         String wrongAnswer = getResources().getString(R.string.wrong_answer);
 
         if(currentInput.equals(prefLengthMathQuestions.get(currentQuestion).getAnswer())){
+            checkAnswerView.setTextColor(getResources().getColor(R.color.correct_answer_color));
             checkAnswerView.setText(rightAnswer);
             score++;
             scoreScreen();
             answerQuestionView.setText("");
             Log.d("CheckAnswer","Riktig svar");
         } else {
+            checkAnswerView.setTextColor(getResources().getColor(R.color.toolBarColor));
             checkAnswerView.setText(wrongAnswer);
             answerQuestionView.setText("");
             Log.d("CheckAnswer","Galt svar");
