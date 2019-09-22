@@ -21,7 +21,7 @@
     <string name="key_7">7</string>
     <string name="key_8">8</string>
     <string name="key_9">9</string>
-    <string name="answer_key">antworten</string>
+    <string name="answer_key">Ok</string> <!-- word makes button larger so temp is "ok" instead of "antworten" -->
     <string name="delete_key">einfach</string>
     <string name="game_end_title">Fertiggestellt</string>
     <string name="game_end_msg">Es sind keine weiteren Fragen verfügbar</string>
@@ -30,11 +30,13 @@
     <string name="wrong_answer">Falsche Antwort!</string>
     <string name="score_txt">Nummer richtig:</string>
     <string name="ok">Ok</string>
-    <string name="total_game_title">Gesamtpunktzahl</string>
-    <string name="last_game_title">Letzte Partitur</string>
+    <string name="total_game_title">Gesamtpunktzahl:</string>
+    <string name="last_game_title">Letzte Partitur:</string>
     <string name="delete_statistics">Statistiken löschen</string>
     <string name="cancel_dialog_title">Spiel beenden</string>
     <string name="cancel_dialog_text">Willst du das Spiel wirklich beenden?</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
+    <string name="delete_stats_title">Statistiken löschen</string>
+    <string name="delete_stats_txt">Möchten Sie die Statistiken wirklich löschen?</string>
 </resources>

@@ -1,5 +1,6 @@
 package no.jenkins.s326318mappe1;
 
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -82,6 +84,26 @@ public class StatisticsActivity extends AppCompatActivity {
 
     public void deleteBtnListener() {
         //keylistener for delete button
-        findViewById(R.id.delete_statistics_btn).setOnClickListener(view -> deleteStatistics());
+        findViewById(R.id.delete_statistics_btn).setOnClickListener(view -> deleteStatsDialog());
+    }
+
+    public void deleteStatsDialog(){
+        AlertDialog.Builder deleteStatsDialog = new AlertDialog.Builder(this);
+        deleteStatsDialog.setTitle(getString(R.string.delete_stats_title));
+        deleteStatsDialog.setMessage(getString(R.string.delete_stats_txt));
+        deleteStatsDialog.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                deleteStatistics();
+            }
+        });
+        deleteStatsDialog.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        deleteStatsDialog.setCancelable(false);
+        deleteStatsDialog.create().show();
     }
 }

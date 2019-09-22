@@ -10,27 +10,29 @@
 
     <TextView
         android:id="@+id/math_question_view"
-        android:layout_width="196dp"
-        android:layout_height="53dp"
+        android:layout_width="198dp"
+        android:layout_height="72dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.062" />
+        app:layout_constraintVertical_bias="0.025" />
 
     <TextView
         android:id="@+id/math_answer_view"
-        android:layout_width="196dp"
-        android:layout_height="52dp"
+        android:layout_width="195dp"
+        android:layout_height="26dp"
+        android:background="@drawable/my_border"
         android:text=""
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.178" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <TextView
         android:id="@+id/in_game_stats"
@@ -39,16 +41,16 @@
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.302" />
+        app:layout_constraintVertical_bias="0.297" />
 
     <Button
         android:id="@+id/key1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:text="@string/key_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +62,7 @@
         android:id="@+id/key2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:text="@string/key_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +75,7 @@
         android:id="@+id/key3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:text="@string/key_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +87,7 @@
         android:id="@+id/key4"
         android:layout_width="94dp"
         android:layout_height="48dp"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:text="@string/key_4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,45 +100,46 @@
         android:id="@+id/key5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:text="@string/key_5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.663" />
+        app:layout_constraintVertical_bias="0.655" />
 
     <Button
         android:id="@+id/answer_key"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:text="@string/answer_key"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926" />
+        app:layout_constraintVertical_bias="0.939" />
 
     <Button
         android:id="@+id/key0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:text="@string/key_0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
+        app:layout_constraintVertical_bias="0.94" />
 
     <Button
         android:id="@+id/key9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:text="@string/key_9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,7 +152,7 @@
         android:id="@+id/key8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:text="@string/key_8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -162,20 +165,20 @@
         android:id="@+id/key6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:text="@string/key_6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669" />
+        app:layout_constraintVertical_bias="0.653" />
 
     <Button
         android:id="@+id/key7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:text="@string/key_7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -188,13 +191,14 @@
         android:id="@+id/delete_key"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:text="@string/delete_key"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintHorizontal_bias="0.024"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926" />
+        app:layout_constraintVertical_bias="0.934" />
 
     <TextView
         android:id="@+id/check_answer"
@@ -203,9 +207,9 @@
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.365" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

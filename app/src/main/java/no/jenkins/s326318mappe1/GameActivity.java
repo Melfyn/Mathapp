@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -239,11 +240,13 @@ public class GameActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         // Store game values when screen is rotated
-        // lagre spill, input, posisjon i spi.ll
+        StoreMathQuestions storeQuestions = new StoreMathQuestions(prefLengthMathQuestions);
         TextView answerQuestionView = findViewById(R.id.math_answer_view);
         String currentInput = answerQuestionView.getText().toString();
+        outState.putInt("storeScore", score);
         outState.putInt("currentQuestion",currentQuestion);
         outState.putString("currentInput",currentInput);
+        outState.putSerializable("storeQuestions",storeQuestions);
 
         // Save language setting when changing rotation
         String language = PreferenceManager.getDefaultSharedPreferences(this).getString("preference_languages", "default");
@@ -257,7 +260,31 @@ public class GameActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
          // Restore values when screen is rotated
-        savedInstanceState.getInt("currentQuestion");
-        savedInstanceState.getString("currentInput");
+        int restoreCurrentQuestion = savedInstanceState.getInt("currentQuestion");
+        int restoreScore = savedInstanceState.getInt("storeScore");
+        String restoreCurrentInput = savedInstanceState.getString("currentInput");
+        StoreMathQuestions restoredMathQuestions = (StoreMathQuestions) savedInstanceState.getSerializable("storeQuestions");
+
+        // place current input in textview
+        TextView answerQuestionView = findViewById(R.id.math_answer_view);
+        answerQuestionView.setText(restoreCurrentInput);
+
+        // restore questions
+        currentQuestion = restoreCurrentQuestion;
+        prefLengthMathQuestions = restoredMathQuestions.getMathQuestions();
+        // places questions in textview
+        String questionText = getResources().getString(R.string.question_field_text);
+        TextView mathQuestionView = findViewById(R.id.math_question_view);
+        mathQuestionView.setText(questionText +" "+ "\n" + prefLengthMathQuestions.get(currentQuestion).getQuestion());
+
+        //restore and place score in scoreview
+        score = restoreScore;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String gameLengthPreference =  sharedPreferences.getString("preference_number_of_questions", "5");
+        String scoreScreenTxt = getResources().getString(R.string.score_txt);
+        int gameLength = Integer.parseInt(gameLengthPreference);
+
+        TextView scoreView = findViewById(R.id.in_game_stats);
+        scoreView.setText(scoreScreenTxt+" "+restoreScore + " / " + gameLength+" ");
     }
 }

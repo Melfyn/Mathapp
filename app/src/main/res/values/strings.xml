@@ -30,11 +30,13 @@
     <string name="right_answer">Riktig svar!</string>
     <string name="wrong_answer">Galt svar!</string>
     <string name="score_txt">Antall riktige:</string>
-    <string name="total_game_title">Total score</string>
-    <string name="last_game_title">Siste spill score</string>
+    <string name="total_game_title">Total poengsum:</string>
+    <string name="last_game_title">Siste spill poengsum:</string>
     <string name="delete_statistics">Slett statistikk</string>
     <string name="cancel_dialog_title">Avslutt spill</string>
     <string name="cancel_dialog_text">Vil du virkelig avslutte spillet?</string>
     <string name="yes">Ja</string>
     <string name="no">Nei</string>
+    <string name="delete_stats_title">Slett statistikk</string>
+    <string name="delete_stats_txt">Er du sikker på at du vil slette statistikken?</string>
 </resources>
