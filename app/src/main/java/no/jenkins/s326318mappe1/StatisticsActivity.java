@@ -76,10 +76,18 @@ public class StatisticsActivity extends AppCompatActivity {
         // set new values in total score
         int totalScore =  sharedPreferences.getInt("totalScore", 0);
         int totalLength = sharedPreferences.getInt("totalLength", 0);
-
+        /* set values to 0 in last score
+        scoreEditor.putInt("lastScore", 0);
+        scoreEditor.putInt("gameLength", 0);
+        scoreEditor.apply();
+        //set new values in last score
+        int lastScore =  sharedPreferences.getInt("lastScore", 0);
+        int gameLength = sharedPreferences.getInt("gameLength", 0);
+        TextView lastScoreView = findViewById(R.id.last_game_score);
+        lastScoreView.setText(lastScore+" / "+gameLength); */
+        // set reset score in views
         TextView totalScoreView = findViewById(R.id.total_game_score);
         totalScoreView.setText(totalScore+" / "+ totalLength);
-
     }
 
     public void deleteBtnListener() {
