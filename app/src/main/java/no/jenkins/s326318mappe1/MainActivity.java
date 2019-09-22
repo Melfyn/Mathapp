@@ -3,8 +3,12 @@ package no.jenkins.s326318mappe1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
